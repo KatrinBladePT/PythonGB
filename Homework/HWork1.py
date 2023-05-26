@@ -44,14 +44,11 @@ print("Сережа сделал", boy)
 385916 -> yes
 123456 -> no
 """
-number = input("Введите номер билета: ") 
 
 if int(number[0]) + int(number[1]) + int(number[2]) == int(number[3]) + int(number[4]) + int(number[5]):
     print(number, "-> yes")
 else:
     print(number, "-> no")
-
-number = input("Введите номер билета: ") # ввод номера билета
 
 """
 Задача 8: Требуется определить, можно ли от шоколадки размером n × m долек отломить k 
