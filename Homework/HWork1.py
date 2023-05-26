@@ -51,7 +51,6 @@ if int(number[0]) + int(number[1]) + int(number[2]) == int(number[3]) + int(numb
 else:
     print(number, "-> no")
 
-number = input("Введите номер билета: ") # ввод номера билета
 
 """
 Задача 8: Требуется определить, можно ли от шоколадки размером n × m долек отломить k 
@@ -63,6 +62,7 @@ number = input("Введите номер билета: ") # ввод номер
 3 2 4 -> yes
 3 2 1 -> no
 """
+print("введите параметры")
 n, m, k = map(int, input().split())
 
 if k <= n * m and (k % n == 0 or k % m == 0):
