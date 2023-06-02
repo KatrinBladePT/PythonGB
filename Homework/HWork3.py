@@ -3,33 +3,74 @@
 # элементов в массиве. В последующих  строках записаны N целых чисел Ai. Последняя 
 # строка содержит число X
 
-n = int(input("Enter list size: "))
-print("size:", n)
-a = list(map(int, input("Enter list: ").split()))
-print("list:", a)
-x = int(input("Enter number: "))
-print("number:", x)
+while True:
+    try:
+        n = int(input("Enter list size (a positive integer number): "))
+        if n <= 0:
+            raise ValueError
+        break
+    except ValueError:
+        print("Incorrect input. Try again...")
+
+while True:
+    try:
+        a = list(map(int, input("Enter list (integers separated by space): ").split()))
+        if len(a) != n:
+            raise ValueError
+        break
+    except ValueError:
+        print(f"Incorrect input. List should contain {n} elements. Try again...")
+
+while True:
+    try:
+        x = int(input("Enter number: "))
+        break
+    except ValueError:
+        print("Incorrect input. Try again...")
+
+print("List:", a)
+
 count = a.count(x)
 
-print(count)
+print(f"Number of {x} in the given list is: {count}")
 
 # Задача 18: Требуется найти в массиве A[1..N] самый близкий по 
 # величине элемент к заданному числу X. Пользователь в первой строке 
 # вводит натуральное число N – количество элементов в массиве. В последующих  
 # строках записаны N целых чисел Ai. Последняя строка содержит число X
 
-n = int(input()) 
-a = list(map(int, input().split())) 
-x = int(input()) 
+while True:
+    try:
+        n = int(input("Enter list size (a positive integer number): "))
+        if n <= 0:
+            raise ValueError
+        break
+    except ValueError:
+        print("Incorrect input. Try again...")
 
-closest = a[0] 
+while True:
+    try:
+        a = list(map(int, input("Enter list (integers separated by space): ").split()))
+        if len(a) != n:
+            raise ValueError
+        break
+    except ValueError:
+        print(f"Incorrect input. List should contain {n} elements. Try again...")
 
-for i in range(1, n):#
-    if abs(a[i] - x) < abs(closest - x):
-        closest = a[i]
+while True:
+    try:
+        x = int(input("Enter number x (an integer): "))
+        break
+    except ValueError:
+        print("Incorrect input. Try again...")
 
-print(closest) 
+closest = a[0]
+if len(a) > 1:
+    for i in range(1, n):
+        if abs(a[i] - x) < abs(closest - x):
+            closest = a[i]
 
+print(f"The element in the given list closest to x={x} is: {closest}")
 
 # *Задача 20: * В настольной игре Скрабл (Scrabble) каждая буква имеет 
 # определенную ценность. В случае с английским алфавитом очки распределяются 
@@ -54,13 +95,13 @@ rus_values = {"А": 1, "Б": 3, "В": 1, "Г": 3, "Д": 2, "Е": 1, "Ё": 3,
 word = input().upper() 
 score = 0
 
-if all(letter in eng_values for letter in word): 
-    for letter in word:
-        score += eng_values[letter]
-elif all(letter in rus_values for letter in word): 
-    for letter in word:
-        score += rus_values[letter]
-else:
-    print("Error: the word must consist of either English or Russian letters")
+for letter in word:
+    if letter in eng_values:
+        score += eng_values.get(letter)
+    elif letter in rus_values: 
+        score += rus_values.get(letter)
+    else:
+        print("Error: the word must consist of either English or Russian letters")
+        break
 
-print(score) 
+print(score)
